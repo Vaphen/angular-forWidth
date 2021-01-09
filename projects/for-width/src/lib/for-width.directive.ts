@@ -6,6 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 export type MaxRes = 'max';
 export type Range = [number, number | MaxRes];
 
+/** @dynamic */
 @Directive({
   selector: '[forWidth]'
 })

@@ -4,6 +4,10 @@ ForWidth is a angular directive to remove elements from the DOM at specified scr
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
+## Installation
+
+Install with: `npm install for-width`
+
 ## Example
 
 At first, you have to import the module containing the directive:

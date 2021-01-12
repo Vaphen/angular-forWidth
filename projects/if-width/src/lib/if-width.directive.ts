@@ -5,18 +5,19 @@ import { takeUntil } from 'rxjs/operators';
 
 export type MaxRes = 'max';
 export type Range = [number, number | MaxRes];
+export const ifWidthError = new Error('invalid argument for ifWidth attribute specified');
 
 /** @dynamic */
 @Directive({
-  selector: '[forWidth]'
+  selector: '[ifWidth]'
 })
-export class ForWidthDirective implements OnDestroy {
+export class IfWithDirective implements OnDestroy {
   
   private range = new Array<Range>();
   private isShown = this.isElemVisible();
   private unsubscribe$ = new Subject<void>();
 
-  @Input() set forWidth(r: string | Range | Range[]) {
+  @Input() set ifWidth(r: string | Range | Range[]) {
     switch (true) {
       case typeof r === 'string':
         const range = this.rangeFromString((r as string).replace(/'/g, '"'));
@@ -29,7 +30,7 @@ export class ForWidthDirective implements OnDestroy {
         this.range = r as Range[];
         break;
       default:
-        throw new Error('Provided resolution is invalid.')
+        throw ifWidthError;
     }
 
     this.modifyVisibility();
@@ -49,18 +50,25 @@ export class ForWidthDirective implements OnDestroy {
   }
 
   private rangeFromString(str: string): Range | Range[] {
-    const res = JSON.parse(str);
+    let res;
+
+    try {
+      res = JSON.parse(str);
+    } catch (e) {
+      throw ifWidthError;
+    }
+
     if (!this.isArray(res)) {
-      throw new Error('Provided range of resolutions must be an array.');
+      throw ifWidthError;
     }
     const resArr = (res as Array<any>);
     if (resArr.length === 0) {
-      throw new Error('At least one resolution range must be provided (e.g. [0, 500], [500, \'max\']');
+      throw ifWidthError;
     }
 
     // is nested array => array of ranges
     if (!this.isRange(resArr) && !this.isRangeArray(resArr)) {        
-      throw new Error('Provided range array must be either something like [0, 500] or [[0, 500], [500, 1000], [1000, \'max\']]');
+      throw ifWidthError;
     }
 
     return resArr
@@ -75,7 +83,7 @@ export class ForWidthDirective implements OnDestroy {
   }
 
   private isRange(x: any): boolean {
-    return this.isArray(x) && x.length === 2 && typeof x[0] === 'number' && (typeof x[1] === 'number' || x[1] === 'max');
+    return this.isArray(x) && x.length === 2 && typeof x[0] === 'number' && (x[0] < x[1] || x[1] === 'max') && (typeof x[1] === 'number' || x[1] === 'max');
   }
 
   private isArray(arr: any): boolean {

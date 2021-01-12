@@ -20,9 +20,9 @@
       "dom"
     ],
     "paths": {
-      "for-width": [
-        "dist/for-width/for-width",
-        "dist/for-width"
+      "if-width": [
+        "dist/if-width/if-width",
+        "dist/if-width"
       ]
     }
   },

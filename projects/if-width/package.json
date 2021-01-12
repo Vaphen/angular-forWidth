@@ -1,6 +1,6 @@
 {
-  "name": "for-width",
-  "version": "0.0.2",
+  "name": "if-width",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^11.0.6",
     "@angular/core": "^11.0.6"

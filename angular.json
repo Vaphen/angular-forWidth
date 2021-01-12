@@ -3,38 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "forWidth": {
+    "ifWidth": {
       "projectType": "library",
-      "root": "projects/for-width",
-      "sourceRoot": "projects/for-width/src",
+      "root": "projects/if-width",
+      "sourceRoot": "projects/if-width/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/for-width/tsconfig.lib.json",
-            "project": "projects/for-width/ng-package.json"
+            "tsConfig": "projects/if-width/tsconfig.lib.json",
+            "project": "projects/if-width/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/for-width/tsconfig.lib.prod.json"
+              "tsConfig": "projects/if-width/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/for-width/src/test.ts",
-            "tsConfig": "projects/for-width/tsconfig.spec.json",
-            "karmaConfig": "projects/for-width/karma.conf.js"
+            "main": "projects/if-width/src/test.ts",
+            "tsConfig": "projects/if-width/tsconfig.spec.json",
+            "karmaConfig": "projects/if-width/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/for-width/tsconfig.lib.json",
-              "projects/for-width/tsconfig.spec.json"
+              "projects/if-width/tsconfig.lib.json",
+              "projects/if-width/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -44,5 +44,5 @@
       }
     }
   },
-  "defaultProject": "forWidth"
+  "defaultProject": "ifWidth"
 }

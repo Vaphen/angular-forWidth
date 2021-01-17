@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
-import { IfWithDirective } from './if-width.directive';
-
-
+import { IfHeightDirective } from './if-height.directive';
+import { IfWidthDirective } from './if-width.directive';
 
 @NgModule({
-  declarations: [IfWithDirective],
+  declarations: [IfWidthDirective, IfHeightDirective],
   imports: [
   ],
-  exports: [IfWithDirective]
+  exports: [IfWidthDirective, IfHeightDirective]
 })
 export class IfWidthModule { }

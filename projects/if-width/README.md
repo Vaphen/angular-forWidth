@@ -1,6 +1,10 @@
 # ifWidth Angular library
 
 IfWidth is a angular directive to remove elements from the DOM at specified screen-size breakpoints. It works similar to CSS media-queries by specifying a minimum and maximum screen width for which an element should be shown.
+This library currently supports the directives
+- *ifWidth=[0, 500]
+- *ifHeight=[0, 'max']
+for width and height dependent DOM manipulation.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
 
@@ -48,6 +52,8 @@ private smallScreen = [0, 720];
 // component.html
 <p *ifWidth="smallScreen">Multiple ranges</p>
 ```
+
+All examples are also valid with *ifHeight, if the element's rendering should be dependent on the window's size.
 
 ## Parameters
 

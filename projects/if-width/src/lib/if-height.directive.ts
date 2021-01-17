@@ -4,7 +4,7 @@ import { BaseDirective, Range } from './base.directive';
 /**
  * Error that will be thrown if the given parameter is no valid Range
  */
-export const ifWidthError = new Error('invalid argument for ifWidth attribute specified');
+export const ifHeightError = new Error('invalid argument for ifHeight attribute specified');
 
 /**
  * IfHeightDirective is a subclass of the BaseDirective that implements all methods to show/hide
@@ -12,29 +12,28 @@ export const ifWidthError = new Error('invalid argument for ifWidth attribute sp
  */
 /** @dynamic */
 @Directive({
-  selector: '[ifWidth]'
+  selector: '[ifHeight]'
 })
-export class IfWidthDirective extends BaseDirective implements OnDestroy {
+export class IfHeightDirective extends BaseDirective implements OnDestroy {
   
   /**
    * The directive's setter
    */
-  @Input() set ifWidth(r: string | Range | Range[]) {
+  @Input() set ifHeight(r: string | Range | Range[]) {
     this.setRange(r);
   }
-  
+
   /**
-   * Overwritten function that returns the window width
+   * Overwritten function that returns the window hight
    */
   getValueInRange(): number | undefined {
-    return this.document.defaultView?.innerWidth;
+    return this.document.defaultView?.innerHeight;
   }
   
   /**
    * Overwritten function that returns the error that should be thrown if the type validation failed.
    */
   getValidationError(): Error {
-    return ifWidthError;
+    return ifHeightError;
   }
-
 }

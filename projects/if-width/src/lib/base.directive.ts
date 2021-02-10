@@ -10,6 +10,7 @@ export type Range = [number, number | MaxRes];
 /**
  * Base class for all other resizing directives that hide/show elements in the DOM depending on a given range
  */
+/** @dynamic */
 @Directive()
 export abstract class BaseDirective {
     

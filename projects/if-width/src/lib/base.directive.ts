@@ -1,4 +1,5 @@
 import { DOCUMENT } from '@angular/common';
+import { Directive } from '@angular/core';
 import { Inject, TemplateRef, ViewContainerRef } from '@angular/core';
 import { Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -9,6 +10,7 @@ export type Range = [number, number | MaxRes];
 /**
  * Base class for all other resizing directives that hide/show elements in the DOM depending on a given range
  */
+@Directive()
 export abstract class BaseDirective {
     
     abstract getValueInRange(): number | undefined;
